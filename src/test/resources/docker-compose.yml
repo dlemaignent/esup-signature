@@ -10,7 +10,7 @@ services:
       POSTGRES_PASSWORD: esup
       POSTGRES_DB: esupsignature
 
- gs:
+  gs:
     build:
       context: .
       dockerfile: Dockerfile.gs
