@@ -1,7 +1,10 @@
-# Dockerfile.gs
-
 FROM alpine:latest
 
-RUN apk add --no-cache ghostscript
+# Installer Ghostscript dans l'image
+RUN apk --no-cache add ghostscript
 
-CMD ["sleep", "infinity"]
+# Ajouter /usr/bin de l'hôte au PATH du conteneur
+ENV PATH="/usr/bin:${PATH}"
+
+# Commande par défaut (peut être remplacée par votre propre commande)
+CMD ["sh", "-c", "echo 'Ghostscript container is running...'; sleep infinity"]
