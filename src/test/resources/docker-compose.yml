@@ -10,25 +10,9 @@ services:
       POSTGRES_PASSWORD: esup
       POSTGRES_DB: esupsignature
 
-  gs:
+  ghostscript:
     build:
       context: .
       dockerfile: Dockerfile.gs
-    command: ["sleep", "infinity"]
     volumes:
-      - ./your_local_folder:/your_container_folder
-    tty: true
-    stdin_open: true
-
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile.app
-    depends_on:
-      - db
-      - gs
-    ports:
-      - "8000:8000"
-    environment:
-      DATABASE_URL: postgres://esupsignature:esup@db:5432/esupsignature
-      GS_PATH: /usr/bin/gs
+      - /chemin/vers/vos/fichiers:/data  # Montez vos fichiers si nécessaire
