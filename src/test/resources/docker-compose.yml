@@ -10,19 +10,18 @@ services:
       POSTGRES_PASSWORD: esup
       POSTGRES_DB: esupsignature
 
-  gs:
-    image: alpine:latest
+ gs:
+    build:
+      context: .
+      dockerfile: Dockerfile.gs
     command: ["sleep", "infinity"]
     volumes:
       - ./your_local_folder:/your_container_folder
     tty: true
     stdin_open: true
-    build:
-      context: .
-      dockerfile: Dockerfile.gs
 
   app:
-    image: your_app_image:latest
+    image: python:3.9-slim
     depends_on:
       - db
       - gs
