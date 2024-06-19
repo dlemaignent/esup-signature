@@ -9,3 +9,25 @@ services:
       POSTGRES_USER: esupsignature
       POSTGRES_PASSWORD: esup
       POSTGRES_DB: esupsignature
+
+  gs:
+    image: alpine:latest
+    command: ["sleep", "infinity"]
+    volumes:
+      - ./your_local_folder:/your_container_folder
+    tty: true
+    stdin_open: true
+    build:
+      context: .
+      dockerfile: Dockerfile.gs
+
+  app:
+    image: your_app_image:latest
+    depends_on:
+      - db
+      - gs
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgres://esupsignature:esup@db:5432/esupsignature
+      GS_PATH: /usr/bin/gs
