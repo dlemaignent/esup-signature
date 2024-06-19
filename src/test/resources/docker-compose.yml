@@ -21,7 +21,9 @@ services:
     stdin_open: true
 
   app:
-    image: python:3.9-slim
+    build:
+      context: .
+      dockerfile: Dockerfile.app
     depends_on:
       - db
       - gs
