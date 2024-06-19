@@ -834,6 +834,12 @@
 					<composeFile>${project.basedir}/src/test/resources/docker-compose.yml</composeFile>
 					<detachedMode>true</detachedMode>
 					<removeOrphans>true</removeOrphans>
+					<build>
+			                    <args>
+			                        <arg>--force-recreate</arg>  <!-- Forcer la recréation des conteneurs -->
+			                        <arg>--build</arg>  <!-- Reconstruire les images si nécessaire -->
+			                    </args>
+			                </build>
 				</configuration>
 				<executions>
 					<execution>
