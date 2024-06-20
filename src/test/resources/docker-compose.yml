@@ -11,8 +11,6 @@ services:
       POSTGRES_DB: esupsignature
 
   ghostscript:
-    build:
-      context: .
-      dockerfile: Dockerfile.gs
+    image: jbarlow83/ocrmypdf  # Utilise une image avec Ghostscript
     volumes:
-      - /chemin/vers/vos/fichiers:/data  # Montez vos fichiers si nécessaire
+      - ./gs_data:/data  # Partage un volume avec votre système local
