@@ -838,7 +838,7 @@
 				<executions>
 					<execution>
 						<id>pre-integration-test</id>
-						<phase>pre-integration-test</phase>
+						<phase>compile</phase>
 						<goals>
 							<goal>up</goal>
 						</goals>
