@@ -16,9 +16,7 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
@@ -27,9 +25,9 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
-    - name: Install GS
+    - name: Install ghostscript
       run: sudo apt-get update && sudo apt-get install -y ghostscript --fix-missing
     - name: Maven Surefire tests
       run: mvn -B clean package -Dspring.config.location=src/test/resources/application-test.yml -Djava.io.tmpdir=/tmp
-    - name: Build with Maven
+    - name: Maven Selenium tests
       run: mvn -B verify -DskipSurefire=true
