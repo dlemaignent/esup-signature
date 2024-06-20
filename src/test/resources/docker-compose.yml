@@ -9,8 +9,3 @@ services:
       POSTGRES_USER: esupsignature
       POSTGRES_PASSWORD: esup
       POSTGRES_DB: esupsignature
-
-  ghostscript:
-    image: jbarlow83/ocrmypdf  # Utilise une image avec Ghostscript
-    volumes:
-      - ./gs_data:/data  # Partage un volume avec votre système local
