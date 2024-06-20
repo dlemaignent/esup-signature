@@ -30,6 +30,6 @@ jobs:
     - name: Install GS
       run: sudo apt-get update && sudo apt-get install -y ghostscript --fix-missing
     - name: Maven Surefire tests
-      run: mvn -B clean package -Dspring.config.location=/opt/esup-signature-test-work/application.yml -Djava.io.tmpdir=/tmp
+      run: mvn -B clean package -Dspring.config.location=src/test/resources/application-test.yml -Djava.io.tmpdir=/tmp
     - name: Build with Maven
       run: mvn -B verify -DskipSurefire=true
